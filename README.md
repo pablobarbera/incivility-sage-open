@@ -29,10 +29,10 @@ load(&quot;data/dfm-file.rdata&quot;)</code></pre>
 <p>Here’s how to compute the probability that a single tweet is uncivil, according to the definition we use in the paper.</p>
 
 <pre class="r"><code># predicting a single tweet
-text &lt;- &quot;politicians are morons&quot;
-predict_incivility(text=&quot;politicians are awful&quot;, old_dfm = dfm, classifier = lasso)</code></pre>
+tweet &lt;- &quot;politicians are morons&quot;
+predict_incivility(text=tweet, old_dfm = dfm, classifier = lasso)</code></pre>
 
-<pre><code>## [1] 0.2562279</code></pre>
+<pre><code>## [1] 0.9025192</code></pre>
 <p>And here’s how to do the same, but for multiple tweets.</p>
 <pre class="r"><code># predicting multiple tweets
 df &lt;- data.frame(
