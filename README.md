@@ -18,29 +18,20 @@ This README file provides an overview of the materials We are releasing in addit
 
 The code we provide allows any researcher to fit our incivility classifier to new tweets (English only) without having to re-train the classifier.
 
-<p>First, load the quanteda package (which we use for preprocessing the text), the classifier functions available in <code>function.r</code> and the DFM/classifier objects.</p>
-<pre class="r"><code>library(quanteda)</code></pre>
-<pre><code>## Package version: 1.5.1</code></pre>
-<pre><code>## Parallel computing: 2 of 4 threads used.</code></pre>
-<pre><code>## See https://quanteda.io for tutorials and examples.</code></pre>
-<pre><code>## 
-## Attaching package: &#39;quanteda&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:utils&#39;:
-## 
-##     View</code></pre>
-<pre class="r"><code>library(glmnet)</code></pre>
-<pre><code>## Loading required package: Matrix</code></pre>
-<pre><code>## Loading required package: foreach</code></pre>
-<pre><code>## Loaded glmnet 2.0-18</code></pre>
-<pre class="r"><code>source(&quot;functions.R&quot;)
+<p>First, load the quanteda package (which we use for preprocessing the text), the classifier functions available in <code>functions.r</code> and the DFM/classifier objects.</p>
 
+<pre class="r"><code>library(quanteda)
+library(glmnet)
+source(&quot;functions.R&quot;)
 load(&quot;data/lasso-classifier.rdata&quot;)
 load(&quot;data/dfm-file.rdata&quot;)</code></pre>
+
 <p>Here’s how to compute the probability that a single tweet is uncivil, according to the definition we use in the paper.</p>
+
 <pre class="r"><code># predicting a single tweet
 text &lt;- &quot;politicians are morons&quot;
-
 predict_incivility(text=&quot;politicians are awful&quot;, old_dfm = dfm, classifier = lasso)</code></pre>
+
 <pre><code>## [1] 0.2562279</code></pre>
 <p>And here’s how to do the same, but for multiple tweets.</p>
 <pre class="r"><code># predicting multiple tweets
@@ -55,6 +46,7 @@ df &lt;- data.frame(
 predict_incivility(df$text, 
                    old_dfm = dfm,
                    classifier = lasso)</code></pre>
+                   
 <pre><code>## [1] 0.2181500 0.1727687 0.6525642 0.6325972 0.9681808 0.9774939</code></pre>
 
 
